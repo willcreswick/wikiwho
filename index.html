@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WikiWho</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="game">
+        <h1>WikiWho</h1>
+
+        <section id="start-screen" class="game-panel start-screen" aria-labelledby="start-heading">
+            <h2 id="start-heading">Choose your list</h2>
+            <label for="list-select">Choose a list</label>
+            <select id="list-select"></select>
+            <p id="start-status" class="status" role="status" aria-live="polite">
+                Pick a list, then start the game.
+            </p>
+            <button type="button" id="start-button">Start game</button>
+        </section>
+
+        <div id="game-screen" hidden>
+            <p id="game-status" class="status" role="status" aria-live="polite"></p>
+
+            <section class="game-panel" aria-labelledby="clue-heading">
+                <h2 id="clue-heading">Who am I?</h2>
+                <p id="clue-count" class="clue-count"></p>
+                <p id="clue-text" class="clue-text" aria-live="polite"></p>
+
+                <details id="clue-history" class="clue-history" hidden>
+                    <summary>Previous clues</summary>
+                    <ol id="clue-history-list"></ol>
+                </details>
+
+                <form id="guess-form">
+                    <label for="guess-input">Your guess</label>
+                    <div class="guess-controls">
+                        <input
+                            id="guess-input"
+                            name="guess"
+                            type="text"
+                            list="people-options"
+                            autocomplete="off"
+                            placeholder="Start typing a name"
+                            required
+                        >
+                        <datalist id="people-options"></datalist>
+                        <button type="submit" id="guess-button">Guess</button>
+                    </div>
+                </form>
+
+                <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+
+                <div class="round-controls">
+                    <button type="button" id="skip-button">Skip this clue</button>
+                    <button type="button" id="next-person-button" hidden>
+                        Next person
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script src="main.js"></script>
+</body>
+</html>
